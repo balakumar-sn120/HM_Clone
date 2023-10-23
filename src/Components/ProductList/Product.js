@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCardC from "../../antDComponents/organisms/ProductCardC";
 
-function Product({ product, isLoading }) {
+function Product({ product, cardStyle, isLoading }) {
   const productProps = {
     withModelImg: product.articles[0].logoPicture[0].url,
     withoutModelImg: product.articles[0].images[0].url,
@@ -10,7 +10,13 @@ function Product({ product, isLoading }) {
     rgbColors: product.rgbColors,
     sellingAttributes: product.sellingAttributes,
   };
-  return <ProductCardC {...productProps} isLoading={isLoading} />;
+  return (
+    <ProductCardC
+      {...productProps}
+      cardStyle={cardStyle}
+      isLoading={isLoading}
+    />
+  );
 }
 
 export default Product;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ColorIconList = ({ rgbColors }) => {
+const ColorIconList = ({ rgbColors = [] }) => {
   let coloursToDisplay = rgbColors;
   let remainingColor = 0;
   if (rgbColors.length > 4) {

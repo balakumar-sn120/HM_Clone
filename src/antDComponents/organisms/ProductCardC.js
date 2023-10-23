@@ -3,7 +3,7 @@
 //   EllipsisOutlined,
 //   SettingOutlined,
 // } from "@ant-design/icons";
-import { Card } from "antd";
+import { Card, Skeleton } from "antd";
 import { useState } from "react";
 import ColorIconList from "../../Components/atoms/ColorIconList";
 
@@ -17,6 +17,7 @@ const App = ({
   sellingAttributes,
   isModelImg = true,
   isLoading = false,
+  cardStyle,
 }) => {
   const imgArr = [withModelImg, withoutModelImg];
   const [img, setImg] = useState(imgArr[isModelImg ? 0 : 1]);
@@ -28,12 +29,21 @@ const App = ({
       onMouseEnter={() => flipImage()}
       onMouseLeave={() => flipImage()}
       hoverable={true}
-      style={{
-        textAlign: "left",
-        borderRadius: 0,
-      }}
+      style={{ ...cardStyle }}
       loading={isLoading}
-      cover={<img alt={name} style={{ borderRadius: 0 }} src={img} />}
+      cover={
+        isLoading ? (
+          <Skeleton.Node
+            active={true}
+            style={{
+              width: "100%",
+              minHeight: "27rem",
+            }}
+          />
+        ) : (
+          <img alt={name} style={{ borderRadius: 0 }} src={img} />
+        )
+      }
     >
       <Meta title={name} />
       <p className="font-semibold">{formattedAmount}</p>
