@@ -1,14 +1,12 @@
-// exports default function ProductList
 import { React, useEffect, useState } from "react";
 import Product from "./Product";
-import constant from "../../indWasteConstants";
 import { useGetProductsQuery } from "../../services/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/slices/productSlice";
 import ProductLoader from "./ProductLoader";
 // import { configDotenv } from "dotenv";
 
-const ProductList = () => {
+const ProductList = ({ category = "men_all" }) => {
   //Hooks
   const [pageStart, setPageStart] = useState(0);
 
@@ -17,11 +15,11 @@ const ProductList = () => {
   //Variables
 
   const defaultParams = {
-    country: "us",
+    country: "in",
     lang: "en",
     currentpage: `${pageStart}`,
     pagesize: "30",
-    categories: "men_all",
+    categories: category,
     concepts: "H&M MAN",
   };
 

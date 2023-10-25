@@ -28,7 +28,16 @@ export const apiSlice = createApi({
         };
       },
     }),
+    getCategories: builder.query({
+      query: (body) => {
+        return {
+          url: "/categories/list?" + new URLSearchParams(body).toString(),
+          method: "GET",
+          headers: hmRequestHeaders,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = apiSlice;
+export const { useGetProductsQuery, useGetCategoriesQuery } = apiSlice;

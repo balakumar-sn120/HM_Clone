@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./Home";
+import Home from "./Components/Home";
 import "./styles/tailwind.css";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
